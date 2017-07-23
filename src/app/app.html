@@ -1,1 +1,32 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-content>
+    <div class="uno">
+
+        <div class="add">
+            <input #person type="text">
+            <button (click)="add_person(person.value); person.value = '' ">+</button>
+        </div>
+
+        <div id='game' *ngFor="let elem of game; let i = index">
+            <div>
+                <span>{{i+1}}.</span> 
+
+                <input  #r type="number" id='input_rate'>
+                
+                <button (click)="add(elem, r.value); r.value='' ">+</button>
+                <button (click)="zero(elem)">0</button>
+
+                <span id='name'> {{elem.name}} </span>
+                <br>
+                [<span id='history'>{{elem.history}}</span>] = <span id='rate'>{{elem.rate}}</span>   
+
+            </div>
+
+            <div class="buttons">
+                <button (click)="del_person(i)">x</button>
+            </div>
+
+        </div>
+    
+    </div> 
+
+</ion-content>
