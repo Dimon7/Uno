@@ -9,17 +9,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   
 })
 export class MyApp {
-
-  game = [
-    {name : 'Dimon',  rate: 0,  history : '' },
-    {name : 'Taras',  rate: 0,  history : '' },
-    {name : 'Ruslan', rate: 0,  history : '' },
-
-  ];
+  
+  game = [];
 
   zero(elem){
     elem.history = '';
     elem.rate = 0;
+    localStorage.setItem('game', JSON.stringify(this.game) ) ;
+    
   }
   add(elem, r){
     if(r != ''){    
@@ -31,6 +28,7 @@ export class MyApp {
         this.zero(elem);
       }
     }
+    localStorage.setItem('game', JSON.stringify(this.game) ) ;
     
     
   }
@@ -42,21 +40,29 @@ export class MyApp {
         {name : val, rate: 0, history : '' }
       );
     }
+
+    localStorage.setItem('game', JSON.stringify(this.game) ) ;
+    
+    
   }
 
   del_person(id){
 
     this.game.splice(id,1);
+    localStorage.setItem('game', JSON.stringify(this.game) ) ;
+    
+    
   }
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
-            platform.registerBackButtonAction(() => {
-                navigator['app'].exitApp();                
-            });
-        });
+      
+          this.game = JSON.parse( localStorage.getItem('game') );
+          console.log(this.game);
+          
+          platform.registerBackButtonAction(() => {
+              navigator['app'].exitApp();                
+          });
+      });
   }
 }
-
-
-
