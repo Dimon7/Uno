@@ -3,30 +3,29 @@
 
         <div class="add">
             <input #person type="text">
-            <button (click)="add_person(person.value); person.value = '' ">+</button>
+            <button (click)="add_person(person.value); person.value = '' "  ion-button color="secondary">+</button>
         </div>
 
-        <div id='game' *ngFor="let elem of game; let i = index">
-            <div>
-                <span>{{i+1}}.</span> 
+        <div  *ngFor="let elem of game; let i = index">
+            <ion-card  color="light">
+                <ion-card-header>
+                    <span id='name'> {{i+1}}. &nbsp; {{elem.name}} </span>
+                    [<span>{{elem.history}}</span>] = <span id='rate'>{{elem.rate}}</span>
+                </ion-card-header>
+                <ion-card-content>
+                    
+                    <input  #r type="number" >
+                    <button (click)="add(elem, r.value); r.value='' " ion-button color="secondary" >+</button>
 
-                <input  #r type="number" id='input_rate'>
-                
-                <button (click)="add(elem, r.value); r.value='' ">+</button>
-                <button (click)="zero(elem)">0</button>
-
-                <span id='name'> {{elem.name}} </span>
-                <br>
-                [<span id='history'>{{elem.history}}</span>] = <span id='rate'>{{elem.rate}}</span>   
-
-            </div>
-
-            <div class="buttons">
-                <button (click)="del_person(i)">x</button>
-            </div>
-
+                    <button ion-button (click)="zero(elem)">
+                        <ion-icon name="home"></ion-icon>
+                    </button>
+                    
+                    <button ion-button color="danger" clear icon-only (click)="del_person(i)">
+                        <ion-icon name='trash' is-active="false"></ion-icon>
+                    </button>
+                </ion-card-content>
+            </ion-card>
         </div>
-    
     </div> 
-
 </ion-content>
