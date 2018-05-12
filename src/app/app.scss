@@ -1,0 +1,33 @@
+.uno{
+    padding: 15px 0 0;
+
+}
+
+input{
+    width: 55px;
+    height: 25px;
+    margin: 5px;
+    color: black;
+}
+
+#name{
+    margin-right: 5px;
+    font-style: italic;
+}
+
+.add{
+    margin-bottom: 15px;
+    text-align: center;
+    & input{
+        width: 150px;
+    }
+
+}
+
+#rate{
+  font-weight: bold;
+}
+
+
+
+
