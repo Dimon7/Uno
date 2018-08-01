@@ -11,7 +11,7 @@
             <ion-card color="card">
                 <ion-card-header>
                     <span id='name' style="font-weight:bold"> {{i+1}}. &nbsp; {{elem.name}} </span>
-                  <input  #r type="number" >
+                  <input  #r type="tel" >
                   <button (click)="add(elem, r.value); r.value='' " ion-button color="secondary" >+</button>
 
                   <button ion-button (click)="zero(elem)">
