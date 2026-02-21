@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -10,11 +10,17 @@ import {
   IonButton,
   IonIcon,
   IonInput,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonMenuButton,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { homeOutline, trashOutline, addOutline, refreshOutline } from 'ionicons/icons';
+import { menu, trash, add, refresh } from 'ionicons/icons';
 import { GameService } from '../../services/game.service';
 import { Player } from '../../models/player.model';
+import { MenuComponent } from '../../components/menu/menu.component';
 
 @Component({
   selector: 'app-home',
@@ -32,13 +38,19 @@ import { Player } from '../../models/player.model';
     IonButton,
     IonIcon,
     IonInput,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonMenuButton,
+    MenuComponent,
   ],
 })
 export class HomePage {
   readonly players = this.gameService.players;
 
   constructor(private gameService: GameService) {
-    addIcons({ refresh: refreshOutline, trash: trashOutline, add: addOutline });
+    addIcons({ menu, trash, add, refresh });
   }
 
   addPlayer(name: string): void {

@@ -1,70 +1,85 @@
 <ion-app>
-  <ion-content class="ion-padding">
-    <div class="uno">
-      <!-- Add Player Section -->
-      <div class="add">
-        <ion-input
-          #person
-          type="text"
-          placeholder="Name"
-          class="custom-input"
-        ></ion-input>
-        <ion-button
-          (click)="addPlayer(person.value); person.value = ''"
-          color="secondary"
-        >
-          <ion-icon name="add"></ion-icon>
-        </ion-button>
-      </div>
+  <app-menu></app-menu>
 
-      <!-- Players List -->
-      @for (elem of players(); let i = $index; track i) {
-        <ion-card color="light">
-          <ion-card-header>
-            <span class="player-name">
-              {{ i + 1 }}. &nbsp; {{ elem.name }}
-            </span>
-            [<span class="history">{{ elem.history }}</span>] =
-            <span class="rate">{{ elem.rate }}</span>
-          </ion-card-header>
-          <ion-card-content>
-            <div class="card-actions">
-              <div class="input-group">
-                <ion-input
-                  #r
-                  type="number"
-                  placeholder="Points"
-                  class="custom-input"
-                ></ion-input>
-                <ion-button
-                  (click)="addScore(elem, r.value); r.value = ''"
-                  color="secondary"
-                  size="small"
-                >
-                  +
-                </ion-button>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button auto-hide="false">
+            <ion-icon name="menu"></ion-icon>
+          </ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
 
+    <ion-content class="ion-padding">
+      <div class="uno">
+        <!-- Players List -->
+        @for (elem of players(); let i = $index; track i) {
+          <ion-card color="light">
+            <ion-card-header>
+              <span class="player-name">
+                {{ i + 1 }}. &nbsp; {{ elem.name }}
+              </span>
+              [<span class="history">{{ elem.history }}</span>] =
+              <span class="rate">{{ elem.rate }}</span>
+            </ion-card-header>
+            <ion-card-content>
+              <div class="card-actions">
+                <div class="input-group">
+                  <input
+                    #r
+                    type="number"
+                    class="points-input-native"
+                  />
+                  <ion-button
+                    (click)="addScore(elem, r.value); r.value = ''"
+                    color="secondary"
+                    size="small"
+                    class="plus-btn"
+                  >
+                    +
+                  </ion-button>
+
+                  <ion-button
+                    (click)="resetPlayer(elem)"
+                    size="small"
+                    class="reset-btn"
+                  >
+                    <ion-icon name="refresh"></ion-icon>
+                  </ion-button>
+                </div>
                 <ion-button
-                  (click)="resetPlayer(elem)"
+                  (click)="deletePlayer(i)"
+                  color="danger"
+                  fill="clear"
                   size="small"
-                  color="secondary"
+                  class="delete-btn"
                 >
-                  <ion-icon name="refresh"></ion-icon>
+                  <ion-icon slot="icon-only" name="trash"></ion-icon>
                 </ion-button>
               </div>
-              <ion-button
-                (click)="deletePlayer(i)"
-                color="danger"
-                fill="clear"
-                size="small"
-                class="delete-btn"
-              >
-                <ion-icon slot="icon-only" name="trash"></ion-icon>
-              </ion-button>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      }
+            </ion-card-content>
+          </ion-card>
+        }
+      </div>
+    </ion-content>
+
+    <!-- Fixed bottom input -->
+    <div class="bottom-input-container">
+      <ion-input
+        #person
+        type="text"
+        placeholder="Name"
+        class="bottom-input"
+      ></ion-input>
+      <ion-button
+        (click)="addPlayer(person.value); person.value = ''"
+        color="secondary"
+        class="add-btn"
+      >
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
     </div>
-  </ion-content>
+  </div>
 </ion-app>

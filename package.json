@@ -12,7 +12,7 @@
     "cap:open:ios": "npx cap open ios",
     "android": "npm run cap:sync && npx cap open android",
     "ios": "npm run cap:sync && npx cap open ios",
-    "icons": "npx @capacitor/assets generate --iconBackgroundColor '#4e8ef7' --splashBackgroundColor '#4e8ef7'"
+    "icons": "npx @capacitor/assets generate --splashBackgroundColor '#4e8ef7'"
   },
   "dependencies": {
     "@angular/common": "^17.3.0",
