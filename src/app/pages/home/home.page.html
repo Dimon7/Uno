@@ -1,0 +1,70 @@
+<ion-app>
+  <ion-content class="ion-padding">
+    <div class="uno">
+      <!-- Add Player Section -->
+      <div class="add">
+        <ion-input
+          #person
+          type="text"
+          placeholder="Name"
+          class="custom-input"
+        ></ion-input>
+        <ion-button
+          (click)="addPlayer(person.value); person.value = ''"
+          color="secondary"
+        >
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </div>
+
+      <!-- Players List -->
+      @for (elem of players(); let i = $index; track i) {
+        <ion-card color="light">
+          <ion-card-header>
+            <span class="player-name">
+              {{ i + 1 }}. &nbsp; {{ elem.name }}
+            </span>
+            [<span class="history">{{ elem.history }}</span>] =
+            <span class="rate">{{ elem.rate }}</span>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="card-actions">
+              <div class="input-group">
+                <ion-input
+                  #r
+                  type="number"
+                  placeholder="Points"
+                  class="custom-input"
+                ></ion-input>
+                <ion-button
+                  (click)="addScore(elem, r.value); r.value = ''"
+                  color="secondary"
+                  size="small"
+                >
+                  +
+                </ion-button>
+
+                <ion-button
+                  (click)="resetPlayer(elem)"
+                  size="small"
+                  color="secondary"
+                >
+                  <ion-icon name="refresh"></ion-icon>
+                </ion-button>
+              </div>
+              <ion-button
+                (click)="deletePlayer(i)"
+                color="danger"
+                fill="clear"
+                size="small"
+                class="delete-btn"
+              >
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      }
+    </div>
+  </ion-content>
+</ion-app>

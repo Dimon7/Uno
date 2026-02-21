@@ -1,0 +1,75 @@
+.custom-input {
+  width: 55px;
+  height: 25px;
+  margin: 5px;
+  --padding-start: 8px;
+  font-size: 14px;
+}
+
+.player-name {
+  margin-right: 5px;
+  font-style: italic;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.history {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.rate {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  white-space: nowrap;
+}
+
+.add {
+  margin-bottom: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  & .custom-input {
+    width: 150px;
+  }
+}
+
+ion-card {
+  margin: 8px 0;
+}
+
+ion-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 12px 16px 8px;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+ion-card-content {
+  padding: 8px 16px 12px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.delete-btn {
+  flex-shrink: 0;
+}
