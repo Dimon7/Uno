@@ -21,7 +21,7 @@
               <span class="player-name">
                 {{ i + 1 }}. &nbsp; {{ elem.name }}
               </span>
-              [<span class="history">{{ elem.history }}</span>] =
+              [<span class="history">{{ gameService.formatHistory(elem.history) }}</span>] =
               <span class="rate">{{ elem.rate }}</span>
             </ion-card-header>
             <ion-card-content>
@@ -38,7 +38,7 @@
                     size="small"
                     class="plus-btn"
                   >
-                    +
+                    <ion-icon name="add"></ion-icon>
                   </ion-button>
 
                   <ion-button
@@ -70,6 +70,7 @@
       <ion-input
         #person
         type="text"
+        inputmode="text"
         placeholder="Name"
         class="bottom-input"
       ></ion-input>

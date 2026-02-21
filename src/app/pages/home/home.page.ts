@@ -49,7 +49,7 @@ import { MenuComponent } from '../../components/menu/menu.component';
 export class HomePage {
   readonly players = this.gameService.players;
 
-  constructor(private gameService: GameService) {
+  constructor(public gameService: GameService) {
     addIcons({ menu, trash, add, refresh });
   }
 

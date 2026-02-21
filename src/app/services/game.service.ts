@@ -32,7 +32,7 @@ export class GameService {
     if (name.trim()) {
       this.players.update(players => [
         ...players,
-        { name: name.trim(), rate: 0, history: '' },
+        { name: name.trim(), rate: 0, history: [] },
       ]);
       this.saveToStorage();
     }
@@ -50,9 +50,10 @@ export class GameService {
         this.players.update(players =>
           players.map(p => {
             if (p === player) {
+              const newHistory = [...p.history, score];
               return {
                 ...p,
-                history: p.history + `${score}, `,
+                history: newHistory,
                 rate: p.rate + score,
               };
             }
@@ -67,7 +68,7 @@ export class GameService {
   resetPlayer(player: Player): void {
     this.players.update(players =>
       players.map(p =>
-        p === player ? { ...p, history: '', rate: 0 } : p
+        p === player ? { ...p, history: [], rate: 0 } : p
       )
     );
     this.saveToStorage();
@@ -76,5 +77,9 @@ export class GameService {
   clearAll(): void {
     this.players.set([]);
     this.saveToStorage();
+  }
+
+  formatHistory(history: number[]): string {
+    return history.join(', ');
   }
 }
